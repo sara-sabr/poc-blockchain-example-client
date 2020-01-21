@@ -1,21 +1,21 @@
 import React from 'react'
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
-import rideauCanal from '../assets/rideau_canal.jpg';
+import flag from '../assets/flag.jpg';
 
 const Styles = styled.div`
     .jumbo {
-        background: url(${rideauCanal}) no-repeat fixed bottom;
+        background: url(${flag}) no-repeat center center;
         background-size: cover;
         color: #ccc;
-        height: 200px;
+        height: 400px;
         position: relative;
         z-index: -2;
     }
 
     .overlay {
         background-color: #000;
-        opacity: 0.6;
+        opacity: 0.2;
         position: absolute;
         top: 0;
         left: 0;
