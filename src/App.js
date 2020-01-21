@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './Home';
-import { About } from './About';
-import { Contact } from './Contact';
+import { Form } from './Form';
+import { Records } from './Records';
 import { NoMatch } from './NoMatch';
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
@@ -18,8 +18,8 @@ class App extends Component {
    <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      <Route path="/form" component={Form} />
+      <Route path="/records" component={Records} />
       <Route component={NoMatch} />
     </Switch>
     </Router>
