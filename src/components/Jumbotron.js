@@ -1,6 +1,6 @@
 import React from 'react'
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import flag from '../assets/flag.jpg';
 
 const Styles = styled.div`
