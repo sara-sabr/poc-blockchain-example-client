@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
       .inputForm {
         padding: 40px;
-        max-width: 400px;
+        max-width: 500px;
       }
     `;
 

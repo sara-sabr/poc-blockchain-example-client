@@ -1,11 +1,14 @@
 import React from 'react'
-import styled from 'styled-components';
 import { Input } from './components/Input';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import leaf from '../src/assets/leaf.jpg';
 
 export const Form = () => (
-        <Container>
-        <h2>Death Notification Form</h2>
-            <Input/>
+        <Container fluid>
+        <h2 class="text-center">Death Notification Form</h2>
+        <p class="lead text-center"> Please enter the information accurately</p>
+            <Row>
+            <Col md={{ span: 6, offset: 3 }}><Input/></Col>
+            </Row>
         </Container>
     )
