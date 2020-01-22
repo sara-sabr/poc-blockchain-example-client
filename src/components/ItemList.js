@@ -12,10 +12,17 @@ const myData =
 
 const Styles = styled.div`
 
-.listItems {
+.listGroup {
       maxWidth: 400;
       margin: '0 auto 10px';
+      padding-bottom: 0.5em;
       }
+  .getData {
+    padding-bottom: 1em;
+  }
+  .listItems {
+    background: #fafafa;
+  }
     `;
 
 export class ItemList extends Component {
@@ -38,8 +45,8 @@ export class ItemList extends Component {
       return (
         <Styles>
           {this.state.data.map((post, index) => {
-              return <ListGroup className="listItems">
-                <ListGroup.Item header={post.Key}>
+              return <ListGroup className="listGroup">
+                <ListGroup.Item className="listItems" header={post.Key}>
                   <p>Name: {post.Record.first}  {post.Record.last}</p> <p>Date of Death: {post.Record.dod}</p> 
                 </ListGroup.Item>
               </ListGroup>

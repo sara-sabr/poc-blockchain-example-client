@@ -6,6 +6,8 @@ const Styles = styled.div`
       .inputForm {
         padding: 40px;
         max-width: 500px;
+        border: 1px solid #bcbcbc;
+        background: #eeeeee;
       }
     `;
 
@@ -60,18 +62,14 @@ const Styles = styled.div`
           
            handleInput(e, element) {
             e.preventDefault();
-            console.log(e);
             const { newPerson } = this.state;
             newPerson[element] = e.target.value;
-            console.log(newPerson);
             this.setState({ newPerson });
-            console.log(this.setState({ newPerson }));
           }
         
           handleSubmit(e) {
             e.preventDefault();
             const data = this.state.citizen;
-            console.log(data);
             const { citizen, newPerson } = this.state;
             this.setState(
               {
