@@ -98,7 +98,7 @@ const Styles = styled.div`
         </Form.Group>
             <Form.Group controlId="formGridAddress1">
                     <Form.Label componentClass={FormLabel}>Deceased SIN</Form.Label>
-                        <FormControl type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-00"/>
+                        <FormControl type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
             </Form.Group>
             <Form.Group>
                     <Form.Label componentClass={FormLabel} for="formControlsFile">Death Certificate</Form.Label>

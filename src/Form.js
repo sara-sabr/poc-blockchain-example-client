@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input } from './components/Input';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import leaf from '../src/assets/leaf.jpg';
+
 
 export const Form = () => (
         <Container fluid>
