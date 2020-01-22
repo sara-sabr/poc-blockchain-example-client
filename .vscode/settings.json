@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/aeecff04-80cc-460b-a292-c9563ad0294f/resourceGroups/EsSCRaPRg/providers/Microsoft.Web/sites/dn-demo-app",
+    "appService.deploySubpath": ""
+}

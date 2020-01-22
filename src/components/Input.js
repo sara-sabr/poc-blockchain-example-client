@@ -6,6 +6,8 @@ const Styles = styled.div`
       .inputForm {
         padding: 40px;
         max-width: 500px;
+        border: 1px solid #bcbcbc;
+        background: #eeeeee;
       }
     `;
 
@@ -60,18 +62,14 @@ const Styles = styled.div`
           
            handleInput(e, element) {
             e.preventDefault();
-            console.log(e);
             const { newPerson } = this.state;
             newPerson[element] = e.target.value;
-            console.log(newPerson);
             this.setState({ newPerson });
-            console.log(this.setState({ newPerson }));
           }
         
           handleSubmit(e) {
             e.preventDefault();
             const data = this.state.citizen;
-            console.log(data);
             const { citizen, newPerson } = this.state;
             this.setState(
               {
@@ -98,7 +96,7 @@ const Styles = styled.div`
         </Form.Group>
             <Form.Group controlId="formGridAddress1">
                     <Form.Label componentClass={FormLabel}>Deceased SIN</Form.Label>
-                        <FormControl type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-00"/>
+                        <FormControl type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
             </Form.Group>
             <Form.Group>
                     <Form.Label componentClass={FormLabel} for="formControlsFile">Death Certificate</Form.Label>
