@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Form, FormControl, FormLabel } from 'react-bootstrap';
+import { Button, Form, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -66,6 +66,7 @@ const Styles = styled.div`
             newPerson[element] = e.target.value;
             this.setState({ newPerson });
           }
+
         
           handleSubmit(e) {
             e.preventDefault();
@@ -77,38 +78,40 @@ const Styles = styled.div`
               }
             );
             console.log(data);
+            
           }
         
 
         render() {
-            const { citizen, newPerson } = this.state;
+            // const { citizen, newPerson } = this.state;
             const { first, last, sin } = this.state.newPerson;
         return (
     <Styles>
-        <Form className="inputForm" horizontal onSubmit={this.handleSubmit}>
+        <Form className="inputForm" onSubmit={this.handleSubmit}>
             <Form.Group controlId="formHorizontalFirstName">
-                <Form.Label componentClass={FormLabel}>First Name</Form.Label>
+                <Form.Label >First Name</Form.Label>
                     <Form.Control value={first} type="name" onChange={e => this.handleInput(e, "first")} placeholder="John" />
             </Form.Group>
             <Form.Group controlId="formHorizontalLastName">
-          <Form.Label componentClass={FormLabel}>Last Name</Form.Label>
-            <FormControl type="name" value={last} onChange={e => this.handleInput(e, "last")} placeholder="Smith"/>
+          <Form.Label >Last Name</Form.Label>
+            <Form.Control type="name" value={last} onChange={e => this.handleInput(e, "last")} placeholder="Smith"/>
         </Form.Group>
             <Form.Group controlId="formGridAddress1">
-                    <Form.Label componentClass={FormLabel}>Deceased SIN</Form.Label>
-                        <FormControl type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
+                    <Form.Label >Deceased SIN</Form.Label>
+                        <Form.Control type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
             </Form.Group>
             <Form.Group>
-                    <Form.Label componentClass={FormLabel} for="formControlsFile">Death Certificate</Form.Label>
-            <FormControl
+                    <Form.Label  >Death Certificate</Form.Label>
+            <Form.Control
                     id="formControlsFile"
                     type="file"
                     label="File"
                     help="Example block-level help text here."
             />
             </Form.Group>
-            <Button className="getData" bsStyle="primary" bsSize="large" type="submit" block>Submit</Button>
+            <Button className="getData" type="submit" block>Submit</Button>
         </Form>
+
     </Styles>
 )
         }
