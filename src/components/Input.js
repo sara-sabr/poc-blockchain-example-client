@@ -77,8 +77,9 @@ const Styles = styled.div`
                 citizen: [...citizen, newPerson]
               }
             );
-            console.log(data);
             
+            console.log(JSON.stringify(newPerson));
+            alert('Success! The data was sent to the server: \n' + JSON.stringify(newPerson));
           }
         
 

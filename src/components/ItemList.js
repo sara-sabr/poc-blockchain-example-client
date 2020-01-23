@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, ListGroup } from 'react-bootstrap';
+import { Button, ListGroup, Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const myData = 
@@ -30,18 +30,28 @@ export class ItemList extends Component {
     constructor(){
         super();
         
-        this.state = {'data': []}
+        this.state = {
+          'loading': false,
+          'data': []
+      }
         this.handleClick = this.handleClick.bind(this);
       }
       
       handleClick(){
         this.setState(state => ({
-          'data': myData
+          'loading': true,
+          'data': []
         }));
+        setTimeout(()=>{
+          this.setState({loading: false});
+        }, 2000);
+        setTimeout(()=>{
+          this.setState({'data': myData});
+        }, 3000);
       }
       
       render() {
-        
+        const {loading} = this.state;
       return (
         <Styles>
           {this.state.data.map((post, index) => {
@@ -51,7 +61,10 @@ export class ItemList extends Component {
                 </ListGroup.Item>
               </ListGroup>
             })}
-              <Button onClick={this.handleClick} className="getData" bsStyle="primary" bsSize="large" block> View All </Button>
+              <Button onClick={this.handleClick} className="getData" bsStyle="primary" bsSize="large" block disabled={loading}>
+              {loading ? <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner> : "View Records"} 
+              </Button>
+                      
         </Styles>
       )
      }
