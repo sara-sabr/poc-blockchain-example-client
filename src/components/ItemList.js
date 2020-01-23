@@ -47,7 +47,7 @@ export class ItemList extends Component {
         }, 2000);
         setTimeout(()=>{
           this.setState({'data': myData});
-        }, 3000);
+        }, 2000);
       }
       
       render() {
