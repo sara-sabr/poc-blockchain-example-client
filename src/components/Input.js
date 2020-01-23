@@ -70,7 +70,7 @@ const Styles = styled.div`
         
           handleSubmit(e) {
             e.preventDefault();
-            const data = this.state.citizen;
+            // const data = this.state.citizen;
             const { citizen, newPerson } = this.state;
             this.setState(
               {
