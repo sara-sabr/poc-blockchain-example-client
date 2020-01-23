@@ -12,7 +12,7 @@ class App extends Component {
   render() {
   return (
    <React.Fragment>
-   <NavigationBar />
+   <NavigationBar/>
    <Jumbotron/>
    <Layout>
    <Router>
