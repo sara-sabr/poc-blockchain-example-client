@@ -94,7 +94,7 @@ const Styles = styled.div`
                 <Form.Control placeholder="ID" />
                 </Col>
                 <Col>
-                <Button variant="outline-primary">Primary</Button>
+                <Button variant="outline-primary">Search</Button>
                 </Col>
             </Row>
         </Form>
