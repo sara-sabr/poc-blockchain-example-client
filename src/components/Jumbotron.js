@@ -30,7 +30,7 @@ export const Jumbotron = () => (
         <Jumbo fluid className="jumbo">
             <div className="overlay"></div>
             <Container>
-                <h1>Death Notification System</h1>
+                <h1>Generic System</h1>
                 <p>A blockchain based system built by ESDC</p>
             </Container>
         </Jumbo>
