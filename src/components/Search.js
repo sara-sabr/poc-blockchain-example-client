@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -88,7 +88,17 @@ const Styles = styled.div`
             const { first, last, sin } = this.state.newPerson;
         return (
     <Styles>
-        <Form className="inputForm" onSubmit={this.handleSubmit}>
+        <Form>
+            <Row>
+                <Col>
+                <Form.Control placeholder="ID" />
+                </Col>
+                <Col>
+                <Button variant="outline-primary">Primary</Button>
+                </Col>
+            </Row>
+        </Form>
+        {/* <Form className="inputForm" onSubmit={this.handleSubmit}>
             <Form.Group controlId="formHorizontalFirstName">
                 <Form.Label >First Name</Form.Label>
                     <Form.Control value={first} type="name" onChange={e => this.handleInput(e, "first")} placeholder="John" />
@@ -111,7 +121,7 @@ const Styles = styled.div`
             />
             </Form.Group>
             <Button className="getData" type="submit" block>Submit</Button>
-        </Form>
+        </Form> */}
 
     </Styles>
 )
