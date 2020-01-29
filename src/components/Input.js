@@ -102,7 +102,7 @@ const Styles = styled.div`
                         <Form.Control type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
             </Form.Group>
             <Form.Group>
-                    <Form.Label  >Death Certificate</Form.Label>
+                    <Form.Label>Import File</Form.Label>
             <Form.Control
                     id="formControlsFile"
                     type="file"
