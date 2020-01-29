@@ -98,7 +98,7 @@ const Styles = styled.div`
             <Form.Control type="name" value={last} onChange={e => this.handleInput(e, "last")} placeholder="Smith"/>
         </Form.Group>
             <Form.Group controlId="formGridAddress1">
-                    <Form.Label >Deceased SIN</Form.Label>
+                    <Form.Label>SIN</Form.Label>
                         <Form.Control type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
             </Form.Group>
             <Form.Group>
