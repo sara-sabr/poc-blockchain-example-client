@@ -1,38 +1,25 @@
 import React, {Component} from 'react';
-import { Button, Form, Row, Col } from 'react-bootstrap';
+import { ListGroup, Form, Row, Col, Button, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-      .inputForm {
-        padding: 40px;
-        max-width: 500px;
-        border: 1px solid #bcbcbc;
-        background: #eeeeee;
+      .listGroup {
+      maxWidth: 400;
+      margin: '0 auto 10px';
+      padding-bottom: 0.5em;
       }
-    `;
+  .findBtn {
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+  }
+  .listItems {
+    background: #fafafa;
+  }
 
-    const myData = [
-        {
-          Key: "400784288",
-          Record: { first: "John", last: "Smith", dod: "2019-01-14" }
-        },
-        {
-          Key: "529875945",
-          Record: { first: "Luke", last: "Skywalker", dod: "2019-01-14" }
-        },
-        {
-          Key: "950255588",
-          Record: { first: "Han", last: "Solo", dod: "2019-01-14" }
-        },
-        {
-          Key: "815657212",
-          Record: { first: "Tony", last: "Stark", dod: "2019-01-14" }
-        },
-        {
-          Key: "251586744",
-          Record: { first: "Steve", last: "Rogers", dod: "2019-01-14" }
-        }
-      ];
+  .searchBar{
+      margin-bottom: 0.5em; 
+  }
+    `;
 
     export class Search extends Component {
 
@@ -40,91 +27,80 @@ const Styles = styled.div`
             super(props, context);
         
             this.state = {
-              value: "",
-              citizen: myData,
-              newPerson: {
-                first: null,
-                last: null,
-                sin: null
+                error: null,
+                loading: false,
+                searchValue: "",
+                data: []
               }
-              
+              this.handleOnChange = this.handleOnChange.bind(this);
+              this.handleSearch = this.handleSearch.bind(this);
+              this.performSearch = this.performSearch.bind(this);
             };
         
-            this.handleChange = this.handleChange.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
-            this.handleInput = this.handleInput.bind(this);
-        
-          }
-        
-          handleChange(e) {
-            this.setState({ value: e.target.value });
-          }
-          
-           handleInput(e, element) {
-            e.preventDefault();
-            const { newPerson } = this.state;
-            newPerson[element] = e.target.value;
-            this.setState({ newPerson });
-          }
 
+            performSearch(idx){
+            console.log("Performing Search");
+            const url = `https://dn-demo-api.azurewebsites.net/dn/${idx}`;
+            //CORS Proxy for the server 
+            const proxy = "https://cors-anywhere.herokuapp.com/";
+            fetch(proxy + url)
+                .then(res => res.json())
+                .then(
+                  (results) => {
+                      var newData = this.state.data.concat([results]);
+                    this.setState({
+                      'loading': true,
+                       data: newData
+                    });
+                    console.log(results);
+                  },
+                  (error) => {
+                    this.setState({
+                      loading: true,
+                      error,
+                    });
+                    console.log(error);
+                  });
+            }
         
-          handleSubmit(e) {
-            e.preventDefault();
-            // const data = this.state.citizen;
-            const { citizen, newPerson } = this.state;
-            this.setState(
-              {
-                citizen: [...citizen, newPerson]
-              }
-            );
-            
-            console.log(JSON.stringify(newPerson));
-            alert('Success! The data was sent to the server: \n' + JSON.stringify(newPerson));
-          }
-        
+        handleOnChange(event){
+            this.setState({ searchValue: event.target.value });
+        };
+
+        handleSearch(){
+            this.performSearch(this.state.searchValue);
+        }
 
         render() {
-            // const { citizen, newPerson } = this.state;
-            const { first, last, sin } = this.state.newPerson;
+            const {data} = this.state;
         return (
-    <Styles>
-        <Form>
-            <Row>
-                <Col>
-                <Form.Control placeholder="ID" />
-                </Col>
-                <Col>
-                <Button variant="outline-primary">Search</Button>
-                </Col>
-            </Row>
-        </Form>
-        {/* <Form className="inputForm" onSubmit={this.handleSubmit}>
-            <Form.Group controlId="formHorizontalFirstName">
-                <Form.Label >First Name</Form.Label>
-                    <Form.Control value={first} type="name" onChange={e => this.handleInput(e, "first")} placeholder="John" />
-            </Form.Group>
-            <Form.Group controlId="formHorizontalLastName">
-          <Form.Label >Last Name</Form.Label>
-            <Form.Control type="name" value={last} onChange={e => this.handleInput(e, "last")} placeholder="Smith"/>
-        </Form.Group>
-            <Form.Group controlId="formGridAddress1">
-                    <Form.Label >Deceased SIN</Form.Label>
-                        <Form.Control type="name" value={sin} onChange={e => this.handleInput(e, "sin") } placeholder="000-000-000"/>
-            </Form.Group>
-            <Form.Group>
-                    <Form.Label>Import File</Form.Label>
-            <Form.Control
-                    id="formControlsFile"
-                    type="file"
-                    label="File"
-                    help="Example block-level help text here."
-            />
-            </Form.Group>
-            <Button className="getData" type="submit" block>Submit</Button>
-        </Form> */}
+            <Styles>
+                <Form>
+                    <Row>
+                        <Col>
+                        <Form.Control className="searchBar" onChange={event => this.handleOnChange(event)} value={this.state.searchValue} placeholder="ID" />
+                        </Col>
+                    </Row>
+                </Form>
+                <Button className="findBtn" variant="primary" size="lg" onClick={this.handleSearch} block>
+                  Find Record
+                  </Button>
+                  { data ? (
+                        <Container>
+                            {data.map((item) => {
+                             return <ListGroup className="listGroup" key={item.sin}>
+                                    <ListGroup.Item className="listItems">
+                                    <p>Name: {item.first}  {item.last}</p> <p>SIN: {item.sin}</p> 
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            })}
+                        </Container>
 
-    </Styles>
-)
+                      ) : (
+                          <p>Try Searching for ID</p>
+                      )}
+            </Styles>
+            );
         }
     }
 
