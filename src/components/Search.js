@@ -47,6 +47,8 @@ const Styles = styled.div`
                 .then(res => res.json())
                 .then(
                   (results) => {
+                      //Convert new data into an array with concat
+                      //Map function needs array
                       var newData = this.state.data.concat([results]);
                     this.setState({
                       'loading': true,
