@@ -41,7 +41,7 @@ const Styles = styled.div`
         
             this.state = {
               value: "",
-              citizen: myData,
+              citizen: [],
               newPerson: {
                 first: null,
                 last: null,
@@ -70,14 +70,35 @@ const Styles = styled.div`
         
           handleSubmit(e) {
             e.preventDefault();
-            // const data = this.state.citizen;
             const { citizen, newPerson } = this.state;
-            this.setState(
-              {
-                citizen: [...citizen, newPerson]
-              }
-            );
+            const url = "https://dn-demo-api.azurewebsites.net/dn/2";
+            const proxy = "https://cors-anywhere.herokuapp.com/";
+            const options = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(newPerson)
+
+            }
             
+            // this.setState(
+            //   {
+            //     citizen: [...citizen, newPerson]
+            //   }
+            // );
+            
+            fetch(proxy + url, options)
+            .then(res => res.json())
+            .then((responseJson) => {
+              this.setState({
+                citizen: [...responseJson, newPerson]
+              });
+            console.log(responseJson);   
+            })
+            .catch((error) => {
+              console.error(error);
+            });
             console.log(JSON.stringify(newPerson));
             alert('Success! The data was sent to the server: \n' + JSON.stringify(newPerson));
           }
