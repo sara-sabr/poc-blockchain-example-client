@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from './components/Input';
+import { Search } from './components/Search';
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -9,13 +9,13 @@ const Styles = styled.div`
         }
 `;
 
-export const Form = () => (
+export const Find = () => (
         <Styles>
         <Container className="formBody" fluid>
-        <h2 className="text-center">Generic Form</h2>
+        <h2 className="text-center">Generic Search</h2>
         <p className="lead text-center"> Please enter the information accurately</p>
             <Row>
-            <Col md={{ span: 6, offset: 3 }}><Input/></Col>
+            <Col md={{ span: 6, offset: 3 }}><Search/></Col>
             </Row>
         </Container>
         </Styles>
