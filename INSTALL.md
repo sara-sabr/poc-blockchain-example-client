@@ -33,24 +33,29 @@ cd my-app
 
 + Navigate to the my-app folder
 + Install React Router (this helps navigate through the web app)
-```npm install react-router-dom
+```
+npm install react-router-dom
 ```
 
 + Install styled-components (Enables style change of the components within the javascript files)
-```npm install --save styled-components
+```
+npm install --save styled-components
 ```
 
 + Install React Bootstrap (Enables bootstrap components to your react app)
-```npm install react-bootstrap bootstrap
+```
+npm install react-bootstrap bootstrap
 ```
 
 + Copy and add the link to head of your index.html found in the my-app folder
-```<link
+```
+<link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
-/>```
+/>
+```
 
 + Start the react app in localhost, back in terminal enter
 ```npm start```
