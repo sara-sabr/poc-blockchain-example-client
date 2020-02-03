@@ -27,8 +27,10 @@ a folder for them. (eg. ../myApp) Also, most of these commands will be preform i
 
 + Create the react project with npm
 
-```npx create-react-app my-app
+```
+npx create-react-app my-app
 cd my-app
+npm start
 ```
 
 + Navigate to the my-app folder
