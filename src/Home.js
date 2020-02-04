@@ -21,10 +21,11 @@ export const Home = () => (
             <li class="list-group-item">Feature three</li>
             <li class="list-group-item">Feature four</li>
         </ul>
-        
+
         <h3>The Form</h3>
         <p class="lead font-weight-light">This form allows authorized individuals to enter information of the deceased</p>
         <p>If you are an <span class="font-weight-bold">authorize user</span> and have all the <span class="font-weight-bold">required documents</span> to submit the information; please <a href="/form" class="text-decoration-none">input the information inside</a> the form</p>
+        <p>This is a demo</p>
 
         </Container>
         </Styles>
