@@ -38,7 +38,7 @@ const Styles = styled.div`
 
         constructor(props, context) {
             super(props, context);
-        
+
             this.state = {
               value: "",
               citizen: [],
@@ -47,19 +47,19 @@ const Styles = styled.div`
                 last: null,
                 sin: null
               }
-              
+
             };
-        
+
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
             this.handleInput = this.handleInput.bind(this);
-        
+
           }
-        
+
           handleChange(e) {
             this.setState({ value: e.target.value });
           }
-          
+
            handleInput(e, element) {
             e.preventDefault();
             const { newPerson } = this.state;
@@ -67,11 +67,11 @@ const Styles = styled.div`
             this.setState({ newPerson });
           }
 
-        
+
           handleSubmit(e) {
             e.preventDefault();
             const { citizen, newPerson } = this.state;
-            const url = "https://dn-demo-api.azurewebsites.net/dn/2";
+            const url = process.env.REACT_APP_API_ENDPOINT + "dn/2";
             const proxy = "https://cors-anywhere.herokuapp.com/";
             const options = {
               method: 'POST',
@@ -81,20 +81,20 @@ const Styles = styled.div`
               body: JSON.stringify(newPerson)
 
             }
-            
+
             // this.setState(
             //   {
             //     citizen: [...citizen, newPerson]
             //   }
             // );
-            
+
             fetch(proxy + url, options)
             .then(res => res.json())
             .then((responseJson) => {
               this.setState({
                 citizen: [...responseJson, newPerson]
               });
-            console.log(responseJson);   
+            console.log(responseJson);
             })
             .catch((error) => {
               console.error(error);
@@ -102,7 +102,7 @@ const Styles = styled.div`
             console.log(JSON.stringify(newPerson));
             alert('Success! The data was sent to the server: \n' + JSON.stringify(newPerson));
           }
-        
+
 
         render() {
             // const { citizen, newPerson } = this.state;

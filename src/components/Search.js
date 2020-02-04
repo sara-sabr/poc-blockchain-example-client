@@ -17,7 +17,7 @@ const Styles = styled.div`
   }
 
   .searchBar{
-      margin-bottom: 0.5em; 
+      margin-bottom: 0.5em;
   }
     `;
 
@@ -25,7 +25,7 @@ const Styles = styled.div`
 
         constructor(props, context) {
             super(props, context);
-        
+
             this.state = {
                 error: null,
                 loading: false,
@@ -36,12 +36,12 @@ const Styles = styled.div`
               this.handleSearch = this.handleSearch.bind(this);
               this.performSearch = this.performSearch.bind(this);
             };
-        
+
 
             performSearch(idx){
             console.log("Performing Search");
-            const url = `https://dn-demo-api.azurewebsites.net/dn/${idx}`;
-            //CORS Proxy for the server 
+            const url = process.env.REACT_APP_API_ENDPOINT + `dn/${idx}`;
+            //CORS Proxy for the server
             const proxy = "https://cors-anywhere.herokuapp.com/";
             fetch(proxy + url)
                 .then(res => res.json())
@@ -64,7 +64,7 @@ const Styles = styled.div`
                     console.log(error);
                   });
             }
-        
+
         handleOnChange(event){
             this.setState({ searchValue: event.target.value });
         };
@@ -92,7 +92,7 @@ const Styles = styled.div`
                             {data.map((item) => {
                              return <ListGroup className="listGroup" key={item.sin}>
                                     <ListGroup.Item className="listItems">
-                                    <p>Name: {item.first}  {item.last}</p> <p>SIN: {item.sin}</p> 
+                                    <p>Name: {item.first}  {item.last}</p> <p>SIN: {item.sin}</p>
                                     </ListGroup.Item>
                                 </ListGroup>
                             })}

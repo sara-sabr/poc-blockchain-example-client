@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Button, ListGroup, Spinner } from 'react-bootstrap';
 import styled from 'styled-components';
 
-// const myData = 
+// const myData =
 //   [{"Key":"400784288", "Record":{"first":"John","last":"Smith","dod":"2014-02-10"}},
 // {"Key":"529875945", "Record":{"first":"Luke","last":"Skywalker","dod":"2016-07-19"}},
 // {"Key":"950255588", "Record":{"first":"Han","last":"Solo","dod":"2018-05-01"}},
@@ -26,10 +26,10 @@ const Styles = styled.div`
     `;
 
 export class ItemList extends Component {
-    
+
     constructor(props){
         super(props);
-        
+
         this.state = {
           error: null,
           'loading': false,
@@ -39,8 +39,8 @@ export class ItemList extends Component {
       }
 
       componentDidMount() {
-        const url = "https://dn-demo-api.azurewebsites.net/dn/";
-        //CORS Proxy for the server 
+        const url = process.env.REACT_APP_API_ENDPOINT + "dn/";
+        //CORS Proxy for the server
         const proxy = "https://cors-anywhere.herokuapp.com/";
         fetch(proxy + url)
         .then(res => res.json())
@@ -61,7 +61,7 @@ export class ItemList extends Component {
           }
         )
       }
-      
+
       // handleClick(){
       //   this.setState(state => ({
       //     'loading': true,
@@ -74,7 +74,7 @@ export class ItemList extends Component {
       //     this.setState({'data': myData});
       //   }, 2000);
       // }
-      
+
       render() {
         const {loading, error, data} = this.state;
         if (error) {
@@ -93,10 +93,10 @@ export class ItemList extends Component {
           {data.map((item) => {
               return <ListGroup className="listGroup">
                 <ListGroup.Item className="listItems" key={item.sin}>
-                  <p>Name: {item.first}  {item.last}</p> <p>SIN: {item.sin}</p> 
+                  <p>Name: {item.first}  {item.last}</p> <p>SIN: {item.sin}</p>
                 </ListGroup.Item>
               </ListGroup>
-            })}         
+            })}
         </Styles>
           );
         }
