@@ -39,7 +39,11 @@ export class ItemList extends Component {
       }
 
       componentDidMount() {
-        const url = "https://dn-demo-api.azurewebsites.net/dn/";
+        /**
+             *  New URL dnapi.ericwu.ca/
+             * 
+             */
+        const url = "http://dnapi.ericwu.ca/dn";
         //CORS Proxy for the server 
         const proxy = "https://cors-anywhere.herokuapp.com/";
         fetch(proxy + url)

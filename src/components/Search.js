@@ -40,7 +40,11 @@ const Styles = styled.div`
 
             performSearch(idx){
             console.log("Performing Search");
-            const url = `https://dn-demo-api.azurewebsites.net/dn/${idx}`;
+            /**
+             *  New URL dnapi.ericwu.ca/
+             * 
+             */
+            const url = `http://dnapi.ericwu.ca/dn/${idx}`;
             //CORS Proxy for the server 
             const proxy = "https://cors-anywhere.herokuapp.com/";
             fetch(proxy + url)

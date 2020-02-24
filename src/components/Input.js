@@ -43,6 +43,7 @@ const Styles = styled.div`
               value: "",
               citizen: [],
               newPerson: {
+                key: null,
                 first: null,
                 last: null,
                 sin: null
@@ -71,7 +72,11 @@ const Styles = styled.div`
           handleSubmit(e) {
             e.preventDefault();
             const { citizen, newPerson } = this.state;
-            const url = "https://dn-demo-api.azurewebsites.net/dn/2";
+            /**
+             *  New URL dnapi.ericwu.ca/
+             * 
+             */
+            const url = "http://dnapi.ericwu.ca/dn?";
             const proxy = "https://cors-anywhere.herokuapp.com/";
             const options = {
               method: 'POST',
@@ -106,10 +111,14 @@ const Styles = styled.div`
 
         render() {
             // const { citizen, newPerson } = this.state;
-            const { first, last, sin } = this.state.newPerson;
+            const { key, first, last, sin } = this.state.newPerson;
         return (
     <Styles>
         <Form className="inputForm" onSubmit={this.handleSubmit}>
+        <Form.Group controlId="formHorizontalFirstName">
+                <Form.Label >ID</Form.Label>
+                    <Form.Control value={key} type="name" onChange={e => this.handleInput(e, "key")} placeholder="DN?" />
+            </Form.Group>
             <Form.Group controlId="formHorizontalFirstName">
                 <Form.Label >First Name</Form.Label>
                     <Form.Control value={first} type="name" onChange={e => this.handleInput(e, "first")} placeholder="John" />
